@@ -1,0 +1,77 @@
+.vendor-detail-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .vendor-detail-container {
+    background: #1B1F3B;
+    color: #e0e0e0;
+}
+
+.vendor-title {
+    color: #1B1F3B;
+}
+
+.dark-mode .vendor-title {
+    color: #FF6B6B;
+}
+
+.vendor-image-wrapper {
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.vendor-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.vendor-info p {
+    margin: 8px 0;
+}
+
+.vendor-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.auth-button {
+    padding: 8px 16px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #ff4c4c;
+}
+
+.dark-mode .auth-button {
+    background-color: #FF6B6B;
+    color: white;
+}
+
+.loading-text, .error-text {
+    text-align: center;
+    margin-top: 50px;
+    color: #FF6B6B;
+}
+
+.dark-mode .loading-text, .dark-mode .error-text {
+    color: #FF6B6B;
+}
