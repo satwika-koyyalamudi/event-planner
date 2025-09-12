@@ -35,6 +35,11 @@ function VenueListPage() {
             <div className="card-container">
                 {venues.map(venue => (
                     <div key={venue.id} className="card">
+                         <img 
+                            src={`${process.env.PUBLIC_URL}/images/venues/${venue.photo_url}`} 
+                            alt={venue.name} 
+                            style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px' }}
+                        />
                         <h3>{venue.name}</h3>
                         <p>{venue.location}</p>
                         <button onClick={() => navigate(`/venues/${venue.id}`)}>View Details</button>

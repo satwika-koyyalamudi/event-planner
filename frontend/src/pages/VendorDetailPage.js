@@ -8,6 +8,7 @@ function VendorDetailPage() {
     const [vendor, setVendor] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
         const fetchVendor = async () => {
@@ -27,6 +28,16 @@ function VendorDetailPage() {
         fetchVendor();
     }, [id]);
 
+    const handleAddToCart = () => {
+        setMessage("✅ Added to Cart!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
+    const handleBookNow = () => {
+        setMessage("🎉 Booked Successfully!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
     if (loading) return <p className="loading-text">Loading vendor details...</p>;
     if (error) return <p className="error-text">{error}</p>;
     if (!vendor) return <p className="error-text">No vendor found.</p>;
@@ -37,7 +48,7 @@ function VendorDetailPage() {
 
             <div className="vendor-image-wrapper">
                 <img 
-                    src={`/images/vendors/${vendor.photo_url}`} 
+                    src={vendor.photo_url ? `${process.env.PUBLIC_URL}/images/vendors/${vendor.photo_url}` : `${process.env.PUBLIC_URL}/images/vendors/default.jpg`} 
                     alt={vendor.name} 
                     className="vendor-image"
                 />
@@ -52,9 +63,11 @@ function VendorDetailPage() {
             </div>
 
             <div className="vendor-buttons">
-                <button className="auth-button">Add to Cart</button>
-                <button className="auth-button">Book Now</button>
+                <button className="auth-button" onClick={handleAddToCart}>Add to Cart</button>
+                <button className="auth-button" onClick={handleBookNow}>Book Now</button>
             </div>
+
+            {message && <p className="success-message">{message}</p>}
         </div>
     );
 }

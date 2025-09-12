@@ -126,4 +126,19 @@
 .event-info span {
     font-weight: bold;
 }
+.success-message {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeInOut 2s ease-in-out;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
 

@@ -44,7 +44,7 @@ function HomePage() {
                     {venues.length > 0 ? venues.map(venue => (
                         <Link to={`/venues/${venue.id}`} key={venue.id} className="home-card">
                             <img 
-                                src={`/images/venues/${venue.photo_url}`} 
+                                src={`${process.env.PUBLIC_URL}/images/venues/${venue.photo_url}`} 
                                 alt={venue.name} 
                                 className="home-card-image"
                             />
@@ -61,7 +61,7 @@ function HomePage() {
                     {vendors.length > 0 ? vendors.map(vendor => (
                         <Link to={`/vendors/${vendor.id}`} key={vendor.id} className="home-card">
                             <img 
-                                src={`/images/vendors/${vendor.photo_url}`} 
+                                src={`${process.env.PUBLIC_URL}/images/vendors/${vendor.photo_url}`} 
                                 alt={vendor.name} 
                                 className="home-card-image"
                             />

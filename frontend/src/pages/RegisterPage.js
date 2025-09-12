@@ -12,7 +12,7 @@ function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await api.post('/users/register', { username, email, password });
+            await api.post('/auth/register', { username, email, password });
             navigate('/login');            
         } catch (error) {
             console.error('Registration error:', error.response?.data || error.message);

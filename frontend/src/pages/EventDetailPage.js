@@ -8,6 +8,7 @@ function EventDetailPage() {
     const [event, setEvent] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState("");  // ✅ for success messages
 
     useEffect(() => {
         const fetchEvent = async () => {
@@ -27,6 +28,16 @@ function EventDetailPage() {
         fetchEvent();
     }, [id]);
 
+    const handleAddToCart = () => {
+        setMessage("✅ Added to Cart!");
+        setTimeout(() => setMessage(""), 2000); // Hide after 2 sec
+    };
+
+    const handleBookNow = () => {
+        setMessage("🎉 Booked Successfully!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
     if (loading) return <p className="loading-text">Loading event details...</p>;
     if (error) return <p className="error-text">{error}</p>;
     if (!event) return <p className="error-text">Event not found.</p>;
@@ -37,7 +48,7 @@ function EventDetailPage() {
 
             <div className="event-image-wrapper">
                 <img
-                    src={event.photo_url ? `/images/events/${event.photo_url}` : '/images/events/default.jpg'}
+                    src={event.photo_url ? `${process.env.PUBLIC_URL}/images/events/${event.photo_url}` : `${process.env.PUBLIC_URL}/images/events/default.jpg`}
                     alt={event.event_name}
                     className="event-image"
                 />
@@ -50,9 +61,11 @@ function EventDetailPage() {
             </div>
 
             <div className="event-buttons">
-                <button className="auth-button">Add to Cart</button>
-                <button className="auth-button">Book Now</button>
+                <button className="auth-button" onClick={handleAddToCart}>Add to Cart</button>
+                <button className="auth-button" onClick={handleBookNow}>Book Now</button>
             </div>
+
+            {message && <p className="success-message">{message}</p>}
         </div>
     );
 }

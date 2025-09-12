@@ -8,6 +8,7 @@ function VenueDetailPage() {
     const [venue, setVenue] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
         const fetchVenue = async () => {
@@ -30,6 +31,16 @@ function VenueDetailPage() {
         }
     }, [id]);
 
+    const handleAddToCart = () => {
+        setMessage("✅ Added to Cart!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
+    const handleBookNow = () => {
+        setMessage("🎉 Booked Successfully!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
     if (loading) return <p className="loading-text">Loading venue details...</p>;
     if (error) return <p className="error-text">{error}</p>;
     if (!venue) return <p className="error-text">Venue not found.</p>;
@@ -40,7 +51,7 @@ function VenueDetailPage() {
 
             <div className="venue-image-wrapper">
                 <img 
-                    src={`/images/venues/${venue.photo_url}`} 
+                    src={venue.photo_url ? `${process.env.PUBLIC_URL}/images/venues/${venue.photo_url}` : `${process.env.PUBLIC_URL}/images/venues/default.jpg`} 
                     alt={venue.name} 
                     className="venue-image"
                 />
@@ -55,9 +66,11 @@ function VenueDetailPage() {
             </div>
 
             <div className="venue-buttons">
-                <button className="auth-button">Add to Cart</button>
-                <button className="auth-button">Book Now</button>
+                <button className="auth-button" onClick={handleAddToCart}>Add to Cart</button>
+                <button className="auth-button" onClick={handleBookNow}>Book Now</button>
             </div>
+
+            {message && <p className="success-message">{message}</p>}
         </div>
     );
 }

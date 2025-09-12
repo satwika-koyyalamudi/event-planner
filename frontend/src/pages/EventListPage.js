@@ -45,6 +45,11 @@ function EventListPage() {
             <div className="card-container">
                 {events.map(event => (
                     <div key={event.id} className="card">
+                        <img 
+                            src={`${process.env.PUBLIC_URL}/images/events/${event.photo_url}`} 
+                            alt={event.event_type} 
+                            style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px' }}
+                        />
                         <h3>{event.event_name}</h3>
                         <p>Type: {event.event_type}</p>
                         <p>Date: {new Date(event.event_date).toLocaleDateString()}</p>

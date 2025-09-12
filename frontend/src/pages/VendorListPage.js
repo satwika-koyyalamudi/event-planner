@@ -36,6 +36,11 @@ function VendorListPage() {
             <div className="card-container">
                 {vendors.map(vendor => (
                     <div key={vendor.id} className="card">
+                        <img 
+                            src={`${process.env.PUBLIC_URL}/images/vendors/${vendor.photo_url}`} 
+                            alt={vendor.name} 
+                            style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px' }}
+                        />
                         <h3>{vendor.name}</h3>
                         <p>{vendor.service}</p>
                         <button onClick={() => navigate(`/vendors/${vendor.id}`)}>View Details</button>
