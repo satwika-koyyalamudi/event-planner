@@ -15,7 +15,15 @@ const authRoute = require('./routes/authRoute');
 const app = express();
 
 // Middleware for CORS and JSON parsing
-app.use(cors());
+const corsOptions = {
+    origin: 'https://bespoke-kitten-9d1aac.netlify.app', // your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // API routes
